@@ -1,5 +1,13 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1791625782307,
+      "tag": "0000_boutique_store",
+      "breakpoints": true
+    }
+  ]
 }
