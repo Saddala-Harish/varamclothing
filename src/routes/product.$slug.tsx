@@ -66,7 +66,7 @@ function ProductPage() {
   const maxQty = Math.min(p.stock, 10);
 
   const addToCart = () => {
-    if (p.sizes.length && !size) return toast.error("Please choose a size");
+    if (p.sizes.length && !size) return void toast.error("Please choose a size");
     cart.add({ productId: p.id, slug: p.slug, name: p.name, image: p.images[0] ?? "", price: Number(p.price), size, color, quantity: qty, stock: p.stock });
     return true;
   };

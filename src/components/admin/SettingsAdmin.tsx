@@ -20,7 +20,7 @@ export function SettingsAdmin() {
     e.preventDefault();
     const { id: _id, updated_at: _u, ...rest } = f;
     const { error } = await supabase.from("store_settings").update({ ...rest, delivery_charge: Number(f.delivery_charge), free_delivery_threshold: Number(f.free_delivery_threshold), updated_at: new Date().toISOString() }).eq("id", 1);
-    if (error) return toast.error(error.message);
+    if (error) return void toast.error(error.message);
     toast.success("Settings saved");
     qc.invalidateQueries({ queryKey: ["settings"] });
   };
