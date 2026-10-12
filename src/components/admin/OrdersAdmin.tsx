@@ -19,7 +19,7 @@ export function OrdersAdmin() {
 
   const update = async (id: string, patch: { status?: string; payment_status?: string }) => {
     const { error } = await supabase.from("orders").update(patch).eq("id", id);
-    if (error) return toast.error(error.message);
+    if (error) return void toast.error(error.message);
     toast.success("Order updated");
     qc.invalidateQueries({ queryKey: ["admin-orders"] });
   };

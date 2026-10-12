@@ -27,7 +27,7 @@ export function SiteHeader() {
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate({ to: "/shop", search: { q: q.trim() || undefined } });
+    navigate({ to: "/shop", search: q.trim() ? { q: q.trim() } : {} });
     setOpen(false);
   };
 
@@ -91,7 +91,7 @@ export function SiteHeader() {
             <li key={n.label}>
               <Link
                 to={n.to}
-                search={"search" in n ? n.search : undefined}
+                {...("search" in n ? { search: n.search } : {})}
                 className="text-muted-foreground transition-colors hover:text-primary"
                 activeOptions={{ exact: true, includeSearch: true }}
                 activeProps={{ className: "text-primary border-b-2 border-primary pb-1" }}
@@ -112,7 +112,7 @@ export function SiteHeader() {
               <li key={n.label}>
                 <Link
                   to={n.to}
-                  search={"search" in n ? n.search : undefined}
+                  {...("search" in n ? { search: n.search } : {})}
                   onClick={() => setOpen(false)}
                   className="block rounded-lg px-3 py-2 text-foreground hover:bg-accent"
                 >

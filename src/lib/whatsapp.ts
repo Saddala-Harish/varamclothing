@@ -5,7 +5,7 @@ export function waLink(number: string, message: string) {
   return `https://wa.me/${digits}?text=${encodeURIComponent(message)}`;
 }
 
-type Line = { name: string; quantity: number; price: number; size?: string | null; color?: string | null };
+type Line = { name: string; quantity: number; price: number; size?: string | null | undefined; color?: string | null | undefined };
 
 export function orderMessage(opts: {
   storeName: string;

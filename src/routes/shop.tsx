@@ -6,14 +6,14 @@ import { productsQuery } from "@/lib/store";
 import { CATEGORIES, categoryName } from "@/lib/format";
 import { ProductCard, ProductGridSkeleton } from "@/components/site/ProductCard";
 
-type ShopSearch = { q?: string; category?: string; sort?: "new" | "price-asc" | "price-desc" | "name"; stock?: "in" };
+type ShopSearch = { q?: string | undefined; category?: string | undefined; sort?: "new" | "price-asc" | "price-desc" | "name" | undefined; stock?: "in" | undefined };
 
 export const Route = createFileRoute("/shop")({
   validateSearch: (s: Record<string, unknown>): ShopSearch => ({
-    q: typeof s.q === "string" && s.q ? s.q : undefined,
-    category: typeof s.category === "string" && s.category ? s.category : undefined,
-    sort: ["new", "price-asc", "price-desc", "name"].includes(s.sort as string) ? (s.sort as ShopSearch["sort"]) : undefined,
-    stock: s.stock === "in" ? "in" : undefined,
+    q: typeof s["q"] === "string" && s["q"] ? s["q"] : undefined,
+    category: typeof s["category"] === "string" && s["category"] ? s["category"] : undefined,
+    sort: ["new", "price-asc", "price-desc", "name"].includes(s["sort"] as string) ? (s["sort"] as ShopSearch["sort"]) : undefined,
+    stock: s["stock"] === "in" ? "in" : undefined,
   }),
   head: () => ({
     meta: [

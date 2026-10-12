@@ -46,14 +46,14 @@ export function ProductsAdmin() {
     if (!edit) return;
     const price = Number(edit.price);
     const stock = parseInt(edit.stock, 10);
-    if (!edit.name.trim() || !(price >= 0) || edit.price === "" || !(stock >= 0)) return toast.error("Name, a valid price and stock are required");
+    if (!edit.name.trim() || !(price >= 0) || edit.price === "" || !(stock >= 0)) return void toast.error("Name, a valid price and stock are required");
     const row = {
       name: edit.name.trim(), slug: edit.slug.trim() || slugify(edit.name), category: edit.category, description: edit.description,
       price, mrp: edit.mrp ? Number(edit.mrp) : null, images: list(edit.images), sizes: list(edit.sizes), colors: list(edit.colors), stock,
       featured: edit.featured, new_arrival: edit.new_arrival, best_seller: edit.best_seller, active: edit.active,
     };
     const { error } = edit.id ? await supabase.from("products").update(row).eq("id", edit.id) : await supabase.from("products").insert(row);
-    if (error) return toast.error(error.message);
+    if (error) return void toast.error(error.message);
     toast.success("Product saved");
     setEdit(null);
     refresh();
@@ -62,7 +62,7 @@ export function ProductsAdmin() {
   const del = async (p: Product) => {
     if (!confirm(`Delete "${p.name}"? This can't be undone.`)) return;
     const { error } = await supabase.from("products").delete().eq("id", p.id);
-    if (error) return toast.error(error.message);
+    if (error) return void toast.error(error.message);
     toast.success("Product deleted");
     refresh();
   };

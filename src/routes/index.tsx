@@ -130,7 +130,7 @@ function Home() {
               search={{ category: c.slug }}
               className={`group relative overflow-hidden rounded-3xl ${i < 2 ? "col-span-2 aspect-[16/10] lg:col-span-3" : i === 4 ? "col-span-2 aspect-[16/10] lg:col-span-2 lg:aspect-[4/5]" : "aspect-[4/5] lg:col-span-2"}`}
             >
-              <img src={site(CAT_IMG[c.slug])} alt={c.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <img src={site(CAT_IMG[c.slug] ?? "9")} alt={c.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-2 p-5 text-primary-foreground">
                 <div>
