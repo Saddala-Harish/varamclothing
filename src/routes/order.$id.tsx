@@ -79,7 +79,7 @@ function OrderPage() {
             <h2 className="text-lg text-primary">Delivery details</h2>
             <p className="mt-3 text-sm font-medium">{o.customer_name}</p>
             <p className="text-sm text-muted-foreground">{address}</p>
-            <p className="mt-2 text-sm text-muted-foreground">📞 {o.phone}</p>
+            <p className="mt-2 text-sm text-muted-foreground">Phone: {o.phone}</p>
           </section>
           <section className="rounded-3xl bg-card p-6 shadow-soft">
             <h2 className="text-lg text-primary">What happens next</h2>
